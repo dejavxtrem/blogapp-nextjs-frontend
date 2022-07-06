@@ -25,6 +25,7 @@ jobs:
       - image: cimg/node:16.15.1
     steps:
       - checkout
+      - aws-cli/setup
       - restore_cache:
           keys: [frontend-build]
       - run: node --version
