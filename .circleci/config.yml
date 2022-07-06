@@ -22,11 +22,13 @@ commands:
 jobs:
   build-frontend:
     docker:
-      - image: circleci/node:13.8.0
+      - image: cimg/node:16.15.1
     steps:
       - checkout
       - restore_cache:
           keys: [frontend-build]
+      - run: node --version
+
       - run:
           name: build frontend
           command: >
