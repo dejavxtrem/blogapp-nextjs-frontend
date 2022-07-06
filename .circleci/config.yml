@@ -30,7 +30,7 @@ jobs:
       - run:
           name: build frontend
           command: >
-            npm install && npm run build
+            npm install && npm next build
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
