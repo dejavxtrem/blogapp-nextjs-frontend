@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "blogappnextjsfronten",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/dejay/Documents/React_with_AppSync_Amplify/blogapp-nextjs-frontend/amplify/backend/api/blogappnextjsfronten/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-06-23T19:48:00.970Z",
+      "keyDescription": "public api key"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": [
+      {
+        "mode": "AMAZON_COGNITO_USER_POOLS",
+        "cognitoUserPoolId": "authblogappnextjsfrontenc3f5a767"
+      }
+    ]
+  }
+}

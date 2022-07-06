@@ -1,0 +1,46 @@
+version: 2.1
+
+orbs:
+  aws-cli: circleci/aws-cli@2.0.3
+
+
+commands:
+  destroy-environment:
+    description: Destroy Application stacks given a workflow ID.
+    parameters:
+        workflow_id:
+            type: string
+
+    steps:
+      - run:
+          name: Destroy instance environments
+          when: on_fail
+          command: >
+              aws cloudformation delete-stack
+              --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID}
+
+jobs:
+  build-frontend:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys: [frontend-build]
+      - run:
+          name: build frontend
+          command: |
+            npm install && npm run build
+      - save_cache:
+          paths: [frontend/node_modules]
+          keys: frontend-build
+
+
+
+workflows:
+  default:
+    jobs:
+      - build-frontend:
+          filters:
+            branches:
+              only: [main]
